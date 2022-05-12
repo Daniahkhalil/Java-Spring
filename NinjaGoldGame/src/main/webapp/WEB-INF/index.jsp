@@ -1,61 +1,72 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!-- New line below to use the JSP Standard Tag Library -->
-<span class="support tag open from-rainbow"></span><%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><span class="support tag close from-rainbow"></span>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Demo JSP</title>
-        	<link rel="stylesheet" type="text/css" href="/css/style.css">
-	<script type="text/javascript" src="js/app.js"></script>
-	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-    </head>
+<head>
+<meta charset="UTF-8">
+<title>Ninja Gold</title>
+<!-- for Bootstrap CSS -->
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<!-- For any Bootstrap that uses JS or jQuery-->
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
 <body>
-   <label>Your Gold :</label>
-        <input type="text" name='number'><br><br>
-        <div class="d-flex flex-row bd-highlight mb-3">
+<div >
+        <label for="Gold">Your Gold</label>
         
-      <div class="p-2 bd-highlight">
+        <input type="text" id="Gold" name = "gold" value = "<c:out value="${gold}"/>" readonly>
+        <form action="/reset">
+        	<button type="submit">Reset</button>
+        </form>
         
-  <form action='/Gold' method='post'>
-        <h2>Farm</h2>
-        <p>(earns 10-20 gold)</p>
-        <input type="submit" name='find'><br><br>
-        
+        <div class="row mx-auto mt-5 justify-content-center">
+            <div class="col-2 text-center border border-dark mx-4 px-3 py-5">
+                <h1>Farm</h1>
+                <p style="font-size: 12px;">(earns 10-20 golds)</p>
+                <form method="post" action="/process">
+                    <input type="hidden" name="gold" value="farm">
+                    <button type="submit">Find Gold!</button>
+                </form>
+            </div>
+            
+            <div class="col-2 text-center border border-dark mx-3 px-3 py-5">
+                <h1>Cave</h1>
+                <p style="font-size: 12px;">(earns 10-20 golds)</p>
+                <form method="post" action="/process">
+                    <input type="hidden" name="gold" value="cave">
+                    <button type="submit" >Find Gold!</button>
+                </form>
+            </div>
+            <div class="col-2 text-center border border-dark mx-3 px-3 py-5">
+                <h1>House</h1>
+                <p style="font-size: 12px;">(earns 10-20 golds)</p>
+                <form method="post" action="/process">
+                    <input type="hidden" name="gold" value="house">
+                    <button type="submit" >Find Gold!</button>
+                </form>
+            </div>
+            <div class="col-2 text-center border border-dark mx-3 px-2 py-5">
+                <h1>Quest</h1>
+                <p style="font-size: 11px;">(earns/takes 0-50 golds)</p>
+                <form method="post" action="/process">
+                    <input type="hidden" name="gold" value="quest">
+                    <button type="submit">Find Gold!</button>
+                </form>
+            </div>
+     
         </div>
         
-    <div class="p-2 bd-highlight">
-        
-  <form action='/Gold' method='post'>
-        <h2>Cave</h2>
-        <p>(earns 10-20 gold)</p>
-        <input type="submit" name='find'><br><br>
-        
+        <div class="row mt-5 col-12 px-5 mb-5">
+            <label for="activities" style="font-size: 20px;">Activities</label>
+            <div class="col-12 border p-2 overflow-auto" style="height: 200px;">
+            	<c:forEach var="goldLog" items="${arrLen}">
+			        <c:out value="${goldLog}" escapeXml="false"></c:out>
+			    </c:forEach>
+            </div>
         </div>
-        
-      <div class="p-2 bd-highlight">
-        
-  <form action='/Gold' method='post'>
-        <h2>House</h2>
-        <p>(earns 10-20 gold)</p>
-        <input type="submit" name='find'><br><br>
-        
-        </div>
-        
-              <div class="p-2 bd-highlight">
-        
-  <form action='/Gold' method='post'>
-        <h2>Quest</h2>
-        <p>(earns 10-20 gold)</p>
-        <input type="submit" name='find'><br><br>
-        
-        </div>
-   
     </div>
-    
-    <h3>Activities :</h3>
-    <input type="text" name="activities" id="activities">
-
-
-
 </body>
+</html>
