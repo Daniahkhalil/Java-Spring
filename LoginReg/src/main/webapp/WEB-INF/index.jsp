@@ -34,7 +34,7 @@
                   
                       
                       <form:label path="confirm" for="floatingInput">Confirm Password:</form:label>
-                      <form:input type="password"  path="confirm"  name = "confirm"  placeholder="name@example.com"/>
+                      <form:input type="password"  path="confirm"  name = "confirm"  placeholder="confirm password"/>
                         <form:errors path="confirm" class = "my-3" style="color: red;"/>
                     
                     <button type="submit" class="btn btn-outline-warning align-self-center">Register</button>
@@ -57,7 +57,7 @@
                       <form:input type="password" path="password" class="form-control" name = "password" id="floatingInput" placeholder="Password"/>
                         <form:errors path="password" class = "my-3" style="color: red;"/>
                     
-                    <button type="submit" class="btn btn-outline-warning align-self-center">Log In</button>
+                    <button type="submit" >Log In</button>
                     </form:form>
 			</div>
 

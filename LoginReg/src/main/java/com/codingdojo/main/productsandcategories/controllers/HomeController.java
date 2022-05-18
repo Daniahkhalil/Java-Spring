@@ -82,7 +82,7 @@ public class HomeController {
         // No errors! 
         // TO-DO Later: Store their ID from the DB in session, 
         // in other words, log them in.
-        session.setAttribute("userId", user.getId());
+        session.setAttribute("user", user);
     
         return "redirect:/home";
     }
