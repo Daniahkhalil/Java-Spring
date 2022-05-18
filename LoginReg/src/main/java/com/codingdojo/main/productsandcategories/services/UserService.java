@@ -24,23 +24,25 @@ public class UserService {
      // TO-DO - Reject values or register if no errors:
         
         // Reject if email is taken (present in database)
+    	//optional return null if there is no object returned:null
         Optional<User> potentialUser = userRepo.findByEmail(newUser.getEmail());
         if(potentialUser.isPresent()) {
-            result.rejectValue("email", "Matchs", "This email already exist");
+            result.rejectValue("email", "Matches", "This email already exist !");
             return null;
         }
         // Reject if password doesn't match confirmation
         if(!newUser.getPassword().equals(newUser.getConfirm())) {
-            result.rejectValue("confirm", "Matches", "The Confirm Password must match Password!");
+            result.rejectValue("confirm", "Matches", "The Confirm Password & Password not matched !");
             return null;
         }
         if (result.hasErrors()) {
         	 return null;
-        }else {
-            String hashed = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
-            newUser.setPassword(hashed);
-            return userRepo.save(newUser);
         }
+            
+        String hashed = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
+        newUser.setPassword(hashed);
+        return userRepo.save(newUser);
+        
         // Hash and set password, save user to database
         
         }
@@ -57,7 +59,7 @@ public class UserService {
         }
         
         User logUser = potentialUser.get();
-        if(!BCrypt.checkpw(newLoginObject.getPassword(), potentialUser.get().getPassword())) {
+        if(!BCrypt.checkpw(newLoginObject.getPassword(), logUser.getPassword())) {
             result.rejectValue("password", "Matches", "Invalid Password!");
             return null;
         }

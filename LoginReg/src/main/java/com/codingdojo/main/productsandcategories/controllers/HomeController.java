@@ -21,6 +21,17 @@ public class HomeController {
     // Add once service is implemented:
      @Autowired
      private UserService userServ;
+     
+     @GetMapping("/")
+     public String index(Model model) {
+     
+         // Bind empty User and LoginUser objects to the JSP
+         // to capture the form input
+         model.addAttribute("newUser", new User());// empty format
+         model.addAttribute("newLogin", new LoginUser());
+         return "index.jsp";
+     }
+     
      @GetMapping("/home")
      public String home(Model model, HttpSession session) {
          if (session.getAttribute("user") != null) {
@@ -31,15 +42,7 @@ public class HomeController {
          }
      }
     
-    @GetMapping("/")
-    public String index(Model model) {
-    
-        // Bind empty User and LoginUser objects to the JSP
-        // to capture the form input
-        model.addAttribute("newUser", new User());// empty format
-        model.addAttribute("newLogin", new LoginUser());
-        return "index.jsp";
-    }
+ 
     
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute("newUser") User newUser, 
@@ -48,11 +51,11 @@ public class HomeController {
         // TO-DO Later -- call a register method in the service 
         // to do some extra validations and create a new user!
     	
-        User newUserReg=userServ.register(newUser, result);
+        User newUserReg=userServ.register(newUser, result);// if email not exists return null
         if(result.hasErrors()) {
             // Be sure to send in the empty LoginUser before 
             // re-rendering the page.
-            model.addAttribute("newLogin", new LoginUser());
+            model.addAttribute("newLogin", new LoginUser());// if there is an error return the index with empty object
             return "index.jsp";
         }
         
@@ -72,7 +75,7 @@ public class HomeController {
          User user = userServ.login(newLogin, result);
     
         if(result.hasErrors()) {
-            model.addAttribute("newUser", new User());
+            model.addAttribute("newUser", new User());//return null then go to index again
             return "index.jsp";
         }
     
@@ -86,7 +89,7 @@ public class HomeController {
     
     @GetMapping("/logout")
     public String logout(HttpSession session) { 
-            session.invalidate();
+            session.invalidate();//close the session
             return "redirect:/";
         
     }

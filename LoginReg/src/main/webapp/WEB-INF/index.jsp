@@ -10,53 +10,56 @@
 </head>
 <body>
     
-<h1>Regstiration :</h1>
-<form:form action="/register" method="post" modelAttribute="newUser">
-    <p>
-        <form:label path="userName">User Name</form:label>
-        <form:errors path="userName"/>
-        <form:textarea path="userName"/>
-        
-    </p>
-    <p>
-        <form:label path="email">Email</form:label>
-        <form:errors path="email"/>
-        <form:textarea path="email"/>
-    </p>
-    <p>
-        <form:label path="password">Password</form:label>
-        <form:errors path="password"/>
-          <form:textarea path="password"/>
-        
-    </p>
-    <p>
-        <form:label path="confirm">Confirm</form:label>
-        <form:errors path="confirm"/>     
-         <form:textarea path="confirm"/>
-    </p>    
-    <input type="submit" value="Register"/>
-</form:form>  
-
-<h1>Login :</h1>
-<form:form action="/login" method="post" modelAttribute="newLogin">
-    <p>
-        <form:label path="email">Email</form:label>
-        <form:errors path="email"/>
-        <form:textarea path="email"/>
-        
-    </p>
-    
-
-    <p>
-        <form:label path="password">Password</form:label>
-        <form:errors path="password"/>
-          <form:textarea path="password"/>
-        
-    </p>
-  
-    <input type="submit" value="Login"/>
-</form:form>     
-
+<h2>Register</h2>
+<div>
+                <form:form action="/register" method="post" modelAttribute="newUser">
+                   
+                      
+                      <form:label path="userName" for="floatingInput">Name:</form:label>
+                      <form:input path="userName"  name = "userName" placeholder="User Name"/>
+                        <form:errors path="userName" class = "my-3" style="color: red;"/>
+           
+         
+                      
+                      <form:label path="email" for="floatingInput">Email:</form:label>
+                      <form:input type="email" path="email" name = "email"  placeholder="name@example.com"/>
+                        <form:errors path="email" class = "my-3" style="color: red;"/>
+          
+                   
+                      
+                      <form:label path="password" for="floatingInput">Password:</form:label>
+                      <form:input type="password" path="password"  name = "password"  placeholder="Password"/>
+                        <form:errors path="password" class = "my-3" style="color: red;"/>
+                   
+                  
+                      
+                      <form:label path="confirm" for="floatingInput">Confirm Password:</form:label>
+                      <form:input type="password"  path="confirm"  name = "confirm"  placeholder="name@example.com"/>
+                        <form:errors path="confirm" class = "my-3" style="color: red;"/>
+                    
+                    <button type="submit" class="btn btn-outline-warning align-self-center">Register</button>
+                    </form:form>
+                    
+                    </div>
+    	
+    		 
+    		 <div>
+    			<h2>Login</h2>
+                <form:form action="/login" method="post" modelAttribute="newLogin">
+                  
+                      
+                      <form:label path="email" for="floatingInput">Email:</form:label>
+                      <form:input type="email" path="email" name = "email"  placeholder="name@example.com"/>
+                        <form:errors path="email" class = "my-3" style="color: red;"/>
+                  
+                      
+                      <form:label path="password" for="floatingInput">Password:</form:label>
+                      <form:input type="password" path="password" class="form-control" name = "password" id="floatingInput" placeholder="Password"/>
+                        <form:errors path="password" class = "my-3" style="color: red;"/>
+                    
+                    <button type="submit" class="btn btn-outline-warning align-self-center">Log In</button>
+                    </form:form>
+			</div>
 
 </body>
 </html>

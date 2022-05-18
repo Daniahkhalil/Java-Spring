@@ -36,19 +36,15 @@ public class User {
     private String confirm;
   
     public User() {}
-    
+//	public User(String userName,String email,String password,String confirm) {
+//		super();
+//		this.userName = userName;
+//		this.email = email;
+//		this.password = password;
+//		this.confirm = confirm;
+//	}
 
-	public User(
-			 String userName,
-			 String email,
-			 String password,
-			 String confirm) {
-		super();
-		this.userName = userName;
-		this.email = email;
-		this.password = password;
-		this.confirm = confirm;
-	}
+
 
 
 	public Long getId() {
