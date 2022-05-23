@@ -3,7 +3,7 @@ package com.codingdojo.main.bookclub.models;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-    // we dont use entity becuase we won't add data to database
+
 public class LoginUser {
     
     @NotEmpty(message="Email is required!")
@@ -46,3 +46,6 @@ public class LoginUser {
     
     
 }
+
+
+

@@ -13,7 +13,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-    
+
 @Entity
 @Table(name="users")
 public class User {
@@ -90,8 +90,24 @@ public class User {
 	public void setConfirm(String confirm) {
 		this.confirm = confirm;
 	}
+
+
+
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+
+
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
     
     // TODO - Don't forget to generate getters and setters
     
   
 }
+    
+
